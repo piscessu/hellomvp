@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">YCSAAS</string>
+    <string name="message_loading">loading...</string>
+</resources>
