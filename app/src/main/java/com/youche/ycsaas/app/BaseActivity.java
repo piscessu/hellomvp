@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.youche.ycsaas.module.movie.MovieContract;
-
 import butterknife.ButterKnife;
 
 /**
@@ -24,15 +22,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         mContext = this;
         setContentView(layoutResID());
         ButterKnife.bind(this);
-        initViews();
-        initParams();
+        init();
     }
 
     protected abstract int layoutResID();
 
-    protected abstract void initViews();
-
-    protected abstract void initParams();
+    protected abstract void init();
 
     @Override
     protected void onStart() {
@@ -64,7 +59,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onRestart();
     }
 
-    public void setPresenter(MovieContract.Presenter presenter) {
-
-    }
 }

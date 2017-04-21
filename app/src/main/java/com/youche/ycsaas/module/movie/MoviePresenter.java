@@ -18,6 +18,7 @@ public class MoviePresenter implements MovieContract.Presenter {
     public MoviePresenter(MovieContract.View view) {
         mView = view;
         mMovieModel = new MovieModel();
+        mView.setPresenter(this);
     }
 
     @Override

@@ -12,6 +12,8 @@ import es.dmoral.toasty.Toasty;
 
 public class MovieListActivity extends BaseActivity implements MovieContract.View {
 
+    private MoviePresenter mMoviePresenter;
+
     @BindView(R.id.rcv_movielist)
     RecyclerView mRcvMovielist;
 
@@ -21,16 +23,11 @@ public class MovieListActivity extends BaseActivity implements MovieContract.Vie
     }
 
     @Override
-    protected void initViews() {
+    protected void init() {
 
         mRcvMovielist.setLayoutManager(new LinearLayoutManager(this));
-        MoviePresenter moviePresenter = new MoviePresenter(this);
-        moviePresenter.getTopMovie(0, 10);
-    }
-
-    @Override
-    protected void initParams() {
-
+        new MoviePresenter(this);
+        mMoviePresenter.getTopMovie(0, 10);
     }
 
     @Override
@@ -56,4 +53,8 @@ public class MovieListActivity extends BaseActivity implements MovieContract.Vie
         Toasty.error(this, e.getMessage()).show();
     }
 
+    @Override
+    public void setPresenter(MovieContract.Presenter presenter) {
+        mMoviePresenter = (MoviePresenter) presenter;
+    }
 }
